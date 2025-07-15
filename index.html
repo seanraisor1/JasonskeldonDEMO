@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jason Skeldon</title>
+    <title>Jason Skeldon | Art That Punches Back | Custom Commissions</title>
     
     <style>
         * {
@@ -15,17 +15,17 @@
         :root {
             --black: #000000;
             --white: #ffffff;
-            --gray: #666666;
+            --accent: #ff0000;
+            --gray: #1a1a1a;
             --light-gray: #f5f5f5;
         }
         
         body {
-            font-family: 'Courier New', monospace, -apple-system, BlinkMacSystemFont, 'Arial', sans-serif;
+            font-family: 'Courier New', monospace;
             background: var(--white);
             color: var(--black);
             overflow-x: hidden;
-            line-height: 1.4;
-            font-weight: 400;
+            line-height: 1.6;
             -webkit-font-smoothing: antialiased;
         }
         
@@ -37,22 +37,21 @@
             right: 0;
             background: var(--white);
             z-index: 1000;
-            padding: 2rem 3rem;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
         }
         
         .header-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            max-width: 1800px;
+            max-width: 1400px;
             margin: 0 auto;
         }
         
         .logo {
-            grid-column: 2;
-            justify-self: center;
-            height: 50px;
+            height: 60px;
+            cursor: pointer;
         }
         
         .logo img {
@@ -61,225 +60,310 @@
         }
         
         nav {
-            grid-column: 1;
-            justify-self: start;
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             align-items: center;
         }
         
         nav a {
             color: var(--black);
             text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 400;
-            letter-spacing: 0.02em;
-            text-transform: lowercase;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
             transition: all 0.3s ease;
             position: relative;
-            font-family: 'Courier New', monospace;
         }
         
         nav a:hover {
-            letter-spacing: 0.1em;
+            color: var(--accent);
         }
         
         nav a::after {
-            content: '_';
+            content: '';
             position: absolute;
-            right: -12px;
-            opacity: 0;
-            animation: blink 1s infinite;
-            transition: opacity 0.3s ease;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--accent);
+            transition: width 0.3s ease;
         }
         
         nav a:hover::after {
-            opacity: 1;
+            width: 100%;
         }
         
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
-        }
-        
-        /* Mobile Menu Toggle */
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-        }
-        
-        .menu-toggle span {
-            display: block;
-            width: 24px;
-            height: 1px;
+        .nav-cta {
             background: var(--black);
-            margin: 6px 0;
+            color: var(--white) !important;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
             transition: all 0.3s ease;
+        }
+        
+        .nav-cta:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .nav-cta::after {
+            display: none;
         }
         
         /* Hero Section */
         #hero {
-            min-height: 100vh;
+            margin-top: 90px;
+            padding: 4rem 2rem;
+            background: var(--black);
+            color: var(--white);
+            min-height: 80vh;
             display: flex;
             align-items: center;
-            justify-content: center;
             position: relative;
-            margin-top: 80px;
-            padding: 2rem 3rem;
+            overflow: hidden;
         }
         
-        .hero-content {
-            text-align: center;
+        .hero-container {
             max-width: 1400px;
-            width: 100%;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            z-index: 2;
+            position: relative;
+        }
+        
+        .hero-text h1 {
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 900;
+            line-height: 0.9;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+        
+        .hero-text h1 span {
+            color: var(--accent);
+            display: block;
+        }
+        
+        .hero-text p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary {
+            background: var(--white);
+            color: var(--black);
+            padding: 1.2rem 3rem;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: 3px solid var(--white);
+        }
+        
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255,255,255,0.2);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            padding: 1.2rem 3rem;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: 3px solid var(--white);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--black);
+            transform: translateY(-3px);
         }
         
         .hero-image {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto 3rem;
+            position: relative;
         }
         
         .hero-image img {
             width: 100%;
             height: auto;
-            max-height: 70vh;
-            object-fit: contain;
+            filter: contrast(1.1);
+            animation: float 6s ease-in-out infinite;
         }
         
-        .hero-title {
-            font-size: 1.2rem;
-            font-weight: 400;
-            letter-spacing: 0.08em;
-            text-transform: lowercase;
-            margin-bottom: 3rem;
-            font-family: 'Courier New', monospace;
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
         }
         
-        .hero-cta {
-            display: inline-block;
-            padding: 1rem 3rem;
-            background: var(--black);
-            color: var(--white);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 400;
-            letter-spacing: 0.05em;
-            text-transform: lowercase;
-            transition: all 0.4s ease;
-            font-family: 'Courier New', monospace;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-cta::before {
-            content: '';
+        .hero-bg-text {
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--white);
-            transition: left 0.4s ease;
-            z-index: -1;
-        }
-        
-        .hero-cta:hover {
-            color: var(--black);
-            box-shadow: inset 0 0 0 1px var(--black);
-        }
-        
-        .hero-cta:hover::before {
-            left: 0;
+            top: 50%;
+            right: -10%;
+            transform: translateY(-50%) rotate(-90deg);
+            font-size: 15rem;
+            font-weight: 900;
+            opacity: 0.05;
+            letter-spacing: -0.05em;
+            white-space: nowrap;
+            pointer-events: none;
         }
         
         /* About Section */
         #about {
-            padding: 120px 3rem;
+            padding: 6rem 2rem;
             background: var(--white);
         }
         
-        .about-container {
-            max-width: 1400px;
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-header h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+        
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .about-content {
+            max-width: 1200px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 8rem;
-            align-items: start;
+            gap: 4rem;
+            align-items: center;
         }
         
-        .about-text h2 {
-            font-size: 0.85rem;
-            font-weight: 400;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            margin-bottom: 3rem;
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
         }
         
         .about-text p {
-            font-size: 0.95rem;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
             line-height: 1.8;
-            margin-bottom: 2rem;
-            color: var(--gray);
+        }
+        
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--accent);
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 0.5rem;
         }
         
         .about-image {
-            width: 100%;
-            height: 600px;
-            overflow: hidden;
+            position: relative;
         }
         
         .about-image img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: 20px;
+            bottom: 20px;
+            border: 3px solid var(--accent);
+            z-index: -1;
         }
         
         /* Gallery Section */
         #gallery {
-            padding: 0 3rem 120px;
-            background: var(--white);
-        }
-        
-        .gallery-header {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-        
-        .gallery-title {
-            font-size: 1.2rem;
-            font-weight: 400;
-            letter-spacing: 0.05em;
-            text-transform: lowercase;
-            font-family: 'Courier New', monospace;
+            padding: 6rem 2rem;
+            background: var(--light-gray);
         }
         
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
             max-width: 1400px;
             margin: 0 auto;
         }
         
         .gallery-item {
             position: relative;
-            cursor: pointer;
             overflow: hidden;
+            background: var(--white);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
         
         .gallery-item img {
             width: 100%;
-            height: 500px;
+            height: 400px;
             object-fit: cover;
-            transition: transform 0.6s ease;
+            transition: transform 0.5s ease;
         }
         
         .gallery-item:hover img {
-            transform: scale(1.05);
+            transform: scale(1.1);
         }
         
         .gallery-info {
@@ -287,102 +371,126 @@
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 2rem;
-            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
             color: var(--white);
-            opacity: 0;
-            transition: opacity 0.4s ease;
+            padding: 2rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
         }
         
         .gallery-item:hover .gallery-info {
-            opacity: 1;
+            transform: translateY(0);
         }
         
         .gallery-info h3 {
-            font-size: 0.85rem;
-            font-weight: 400;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
+            font-size: 1.5rem;
             margin-bottom: 0.5rem;
+            text-transform: uppercase;
         }
         
         .gallery-info p {
-            font-size: 0.75rem;
-            opacity: 0.8;
+            font-size: 0.9rem;
+            opacity: 0.9;
         }
         
         /* Testimonials */
         #testimonials {
-            padding: 120px 3rem;
-            background: var(--light-gray);
+            padding: 6rem 2rem;
+            background: var(--black);
+            color: var(--white);
         }
         
-        .testimonials-container {
-            max-width: 1000px;
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
             margin: 0 auto;
-            text-align: center;
         }
         
         .testimonial {
-            margin-bottom: 60px;
+            text-align: center;
+            padding: 2rem;
+            border: 2px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
         }
         
         .testimonial-quote {
-            font-size: 1.8rem;
-            font-weight: 300;
-            line-height: 1.5;
-            margin-bottom: 2rem;
+            font-size: 1.3rem;
             font-style: italic;
+            margin-bottom: 2rem;
+            line-height: 1.6;
         }
         
         .testimonial-author {
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 0.08em;
+            font-size: 1.1rem;
+            font-weight: 700;
             text-transform: uppercase;
-            color: var(--gray);
+            letter-spacing: 0.05em;
+            color: var(--accent);
         }
         
-        /* Commission Form */
+        /* Commission Section */
         #commission {
-            padding: 120px 3rem;
+            padding: 6rem 2rem;
             background: var(--white);
         }
         
-        .form-container {
-            max-width: 600px;
+        .commission-container {
+            max-width: 1200px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
         }
         
-        .form-header {
-            text-align: center;
-            margin-bottom: 60px;
+        .commission-info h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
         }
         
-        .form-title {
-            font-size: 0.85rem;
-            font-weight: 400;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
+        .commission-info ul {
+            list-style: none;
+            margin-bottom: 2rem;
         }
         
-        .form-subtitle {
-            font-size: 0.95rem;
-            color: var(--gray);
+        .commission-info li {
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+            font-size: 1.1rem;
+        }
+        
+        .commission-info li::before {
+            content: '→ ';
+            color: var(--accent);
+            font-weight: 900;
+            margin-right: 0.5rem;
+        }
+        
+        .form-container {
+            background: var(--light-gray);
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
         
         .form-group {
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
         }
         
         .form-group label {
             display: block;
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 0.08em;
+            font-size: 1rem;
+            font-weight: 700;
             text-transform: uppercase;
-            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
         }
         
         .form-group input,
@@ -390,18 +498,18 @@
         .form-group textarea {
             width: 100%;
             padding: 1rem;
-            border: 1px solid #e0e0e0;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            border: 2px solid transparent;
             background: var(--white);
-            font-size: 0.95rem;
-            transition: border-color 0.3s ease;
-            -webkit-appearance: none;
+            transition: all 0.3s ease;
         }
         
         .form-group input:focus,
         .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--black);
+            border-color: var(--accent);
         }
         
         .form-group textarea {
@@ -411,116 +519,123 @@
         
         .submit-button {
             width: 100%;
-            padding: 1rem;
+            padding: 1.2rem;
             background: var(--black);
             color: var(--white);
             border: none;
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 0.08em;
+            font-size: 1.1rem;
+            font-weight: 700;
             text-transform: uppercase;
+            letter-spacing: 0.05em;
             cursor: pointer;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
+            font-family: 'Courier New', monospace;
         }
         
         .submit-button:hover {
-            background: var(--white);
-            color: var(--black);
-            box-shadow: inset 0 0 0 1px var(--black);
+            background: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        /* Call to Action Section */
+        #cta {
+            padding: 6rem 2rem;
+            background: var(--accent);
+            color: var(--white);
+            text-align: center;
+        }
+        
+        #cta h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+        
+        #cta p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         /* Footer */
         footer {
-            padding: 60px 3rem;
-            background: var(--white);
-            border-top: 1px solid #e0e0e0;
+            padding: 3rem 2rem;
+            background: var(--black);
+            color: var(--white);
             text-align: center;
         }
         
         .footer-content {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
         }
         
-        .footer-links {
+        .social-links {
             display: flex;
             justify-content: center;
-            gap: 3rem;
-            margin-bottom: 3rem;
+            gap: 2rem;
+            margin-bottom: 2rem;
         }
         
-        .footer-links a {
-            color: var(--black);
-            text-decoration: none;
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            transition: opacity 0.3s ease;
+        .social-links a {
+            color: var(--white);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
         }
         
-        .footer-links a:hover {
-            opacity: 0.5;
+        .social-links a:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
         }
         
         .footer-copyright {
-            font-size: 0.75rem;
-            color: var(--gray);
-            letter-spacing: 0.05em;
+            font-size: 0.9rem;
+            opacity: 0.7;
         }
         
         /* Mobile Responsive */
         @media (max-width: 768px) {
-            header {
-                padding: 1.5rem 2rem;
-            }
-            
             nav {
                 display: none;
             }
             
-            .menu-toggle {
-                display: block;
-            }
-            
-            #hero {
-                padding: 0 2rem;
-            }
-            
-            #about,
-            #testimonials,
-            #commission {
-                padding: 80px 2rem;
-            }
-            
-            .about-container {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-            
-            .gallery-grid {
+            .hero-container,
+            .about-content,
+            .commission-container {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
             
-            .gallery-item img {
-                height: 400px;
+            .hero-text h1 {
+                font-size: 3rem;
             }
             
-            .testimonial-quote {
-                font-size: 1.3rem;
+            .about-stats {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1rem;
             }
             
-            .footer-links {
-                flex-direction: column;
-                gap: 1.5rem;
+            .stat-number {
+                font-size: 2rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
             }
         }
         
-        /* Loading Animation */
+        /* Animations */
         .fade-in {
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(30px);
             transition: all 0.8s ease;
         }
         
@@ -538,90 +653,111 @@
                 <img src="https://raw.githubusercontent.com/seanraisor1/JasonskeldonDEMO/main/jasonlogoblack.png" alt="Jason Skeldon">
             </div>
             <nav>
-                <a href="#gallery">Gallery</a>
                 <a href="#about">About</a>
-                <a href="#commission">Commission</a>
+                <a href="#gallery">Gallery</a>
                 <a href="#testimonials">Clients</a>
+                <a href="#commission" class="nav-cta">Commission</a>
             </nav>
-            <button class="menu-toggle">
-                <span></span>
-                <span></span>
-            </button>
         </div>
     </header>
     
     <!-- Hero Section -->
     <section id="hero">
-        <div class="hero-content fade-in">
-            <div class="hero-image">
+        <div class="hero-bg-text">SKELDON</div>
+        <div class="hero-container">
+            <div class="hero-text fade-in">
+                <h1>Art That<span>Punches Back</span></h1>
+                <p>Rebellious luxury art for those who refuse to blend in. From Michael Jordan's penthouse to Kevin Hart's compound.</p>
+                <div class="hero-buttons">
+                    <a href="#commission" class="btn-primary">Commission Now</a>
+                    <a href="#gallery" class="btn-secondary">View Gallery</a>
+                </div>
+            </div>
+            <div class="hero-image fade-in">
                 <img src="https://raw.githubusercontent.com/seanraisor1/JasonskeldonDEMO/main/jasonhero.png" alt="Jason Skeldon Art">
             </div>
-            <h1 class="hero-title">Art That Punches Back</h1>
-            <a href="#commission" class="hero-cta">Commission a Piece</a>
         </div>
     </section>
     
     <!-- About Section -->
     <section id="about">
-        <div class="about-container fade-in">
-            <div class="about-text">
-                <h2>Jason Skeldon</h2>
-                <p>Where street meets suite. Where rebellion meets refinement. This is not decoration—this is disruption.</p>
+        <div class="section-header fade-in">
+            <h2>The Artist</h2>
+            <p>Where street meets suite. Where rebellion meets refinement.</p>
+        </div>
+        <div class="about-content">
+            <div class="about-text fade-in">
+                <h3>Jason Skeldon</h3>
                 <p>My canvas extends from the penthouses of Chicago to the compounds of Los Angeles. Each piece exists as a collision point between raw urban energy and uncompromising luxury.</p>
-                <p>For those who refuse to blend in. For spaces that demand presence. This is art that doesn't ask permission.</p>
+                <p>This is not decoration—this is disruption. For those who refuse to blend in. For spaces that demand presence. This is art that doesn't ask permission.</p>
+                <div class="about-stats">
+                    <div class="stat">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Pieces Sold</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">15</div>
+                        <div class="stat-label">Years Creating</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Authentic</div>
+                    </div>
+                </div>
             </div>
-            <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=800&q=90" alt="Jason Skeldon Artist">
+            <div class="about-image fade-in">
+                <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=600&q=90" alt="Jason Skeldon">
             </div>
         </div>
     </section>
     
     <!-- Gallery Section -->
     <section id="gallery">
-        <div class="gallery-header fade-in">
-            <h2 class="gallery-title">Selected Works</h2>
+        <div class="section-header fade-in">
+            <h2>Selected Works</h2>
+            <p>Each piece tells a story. Each canvas makes a statement.</p>
         </div>
         <div class="gallery-grid">
             <div class="gallery-item fade-in">
                 <img src="https://images.unsplash.com/photo-1578321272176-b7bbc0679853?w=600&q=90" alt="Urban Rebellion">
                 <div class="gallery-info">
                     <h3>Urban Rebellion</h3>
-                    <p>Mixed Media on Canvas, 2024</p>
+                    <p>Mixed Media on Canvas • 48" x 60"</p>
                 </div>
             </div>
             <div class="gallery-item fade-in">
                 <img src="https://images.unsplash.com/photo-1561059488-916d69792237?w=600&q=90" alt="Luxe Vandalism">
                 <div class="gallery-info">
                     <h3>Luxe Vandalism</h3>
-                    <p>Spray Paint & Gold Leaf, 2024</p>
+                    <p>Spray Paint & Gold Leaf • 36" x 48"</p>
                 </div>
             </div>
             <div class="gallery-item fade-in">
                 <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=90" alt="Corporate Anarchy">
                 <div class="gallery-info">
                     <h3>Corporate Anarchy</h3>
-                    <p>Digital & Traditional, 2024</p>
+                    <p>Digital & Traditional • 60" x 40"</p>
                 </div>
             </div>
             <div class="gallery-item fade-in">
                 <img src="https://images.unsplash.com/photo-1569163139394-de4798aa62ea?w=600&q=90" alt="Street Symphony">
                 <div class="gallery-info">
                     <h3>Street Symphony</h3>
-                    <p>Acrylic on Metal, 2024</p>
+                    <p>Acrylic on Metal • 72" x 48"</p>
                 </div>
             </div>
             <div class="gallery-item fade-in">
                 <img src="https://images.unsplash.com/photo-1577083165633-14ebcdb0f658?w=600&q=90" alt="Elite Disorder">
                 <div class="gallery-info">
                     <h3>Elite Disorder</h3>
-                    <p>Installation, 2024</p>
+                    <p>Installation • Variable Dimensions</p>
                 </div>
             </div>
             <div class="gallery-item fade-in">
                 <img src="https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?w=600&q=90" alt="Chaos Currency">
                 <div class="gallery-info">
                     <h3>Chaos Currency</h3>
-                    <p>Digital Print, 2024</p>
+                    <p>Digital Print • 30" x 40"</p>
                 </div>
             </div>
         </div>
@@ -629,7 +765,11 @@
     
     <!-- Testimonials Section -->
     <section id="testimonials">
-        <div class="testimonials-container">
+        <div class="section-header fade-in">
+            <h2 style="color: white;">Client Love</h2>
+            <p style="color: rgba(255,255,255,0.8);">From celebrities to CEOs, see what they're saying.</p>
+        </div>
+        <div class="testimonials-grid">
             <div class="testimonial fade-in">
                 <p class="testimonial-quote">"Jason's art doesn't whisper—it roars. The perfect centerpiece for my Chicago home."</p>
                 <p class="testimonial-author">Michael Jordan</p>
@@ -645,54 +785,73 @@
         </div>
     </section>
     
-    <!-- Commission Form Section -->
+    <!-- Commission Section -->
     <section id="commission">
-        <div class="form-container fade-in">
-            <div class="form-header">
-                <h2 class="form-title">Commission Your Statement</h2>
-                <p class="form-subtitle">For those who refuse to be ignored</p>
-            </div>
-            
-            <form id="commission-form" action="#" method="POST">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="budget">Investment Range</label>
-                    <select id="budget" name="budget" required>
-                        <option value="">Select Range</option>
-                        <option value="25-50k">$25,000 - $50,000</option>
-                        <option value="50-100k">$50,000 - $100,000</option>
-                        <option value="100-250k">$100,000 - $250,000</option>
-                        <option value="250k+">$250,000+</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="description">Vision</label>
-                    <textarea id="description" name="description" required placeholder="Describe the statement you want to make"></textarea>
-                </div>
-                
-                <button type="submit" class="submit-button">Submit Commission Request</button>
-            </form>
+        <div class="section-header fade-in">
+            <h2>Commission Your Statement</h2>
+            <p>Ready to own art that refuses to be ignored?</p>
         </div>
+        <div class="commission-container">
+            <div class="commission-info fade-in">
+                <h3>What You Get</h3>
+                <ul>
+                    <li>Custom artwork tailored to your vision</li>
+                    <li>Direct collaboration with Jason</li>
+                    <li>Certificate of authenticity</li>
+                    <li>White-glove delivery & installation</li>
+                    <li>Lifetime support & care instructions</li>
+                </ul>
+                <h3>Investment Ranges</h3>
+                <p>Starting at $25,000 for original pieces. Each commission is unique—let's discuss your vision.</p>
+            </div>
+            <div class="form-container fade-in">
+                <form id="commission-form" action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="budget">Investment Range</label>
+                        <select id="budget" name="budget" required>
+                            <option value="">Select Range</option>
+                            <option value="25-50k">$25,000 - $50,000</option>
+                            <option value="50-100k">$50,000 - $100,000</option>
+                            <option value="100-250k">$100,000 - $250,000</option>
+                            <option value="250k+">$250,000+</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="description">Your Vision</label>
+                        <textarea id="description" name="description" required placeholder="Tell me about the statement you want to make..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-button">Submit Commission Request</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section id="cta">
+        <h2 class="fade-in">Ready to Make a Statement?</h2>
+        <p class="fade-in">Join the ranks of those who refuse to blend in.</p>
+        <a href="#commission" class="btn-primary fade-in" style="background: white; color: #ff0000;">Commission Now</a>
     </section>
     
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <div class="footer-links">
-                <a href="#gallery">Gallery</a>
-                <a href="#about">About</a>
-                <a href="#commission">Commission</a>
-                <a href="mailto:info@jasonskeldon.com">Contact</a>
+            <div class="social-links">
+                <a href="#">📧</a>
+                <a href="#">📷</a>
+                <a href="#">🎨</a>
             </div>
             <p class="footer-copyright">© 2024 Jason Skeldon. All Rights Reserved.</p>
         </div>
@@ -704,7 +863,7 @@
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                const headerOffset = 100;
+                const headerOffset = 90;
                 const elementPosition = target.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
                 
@@ -713,21 +872,6 @@
                     behavior: 'smooth'
                 });
             });
-        });
-        
-        // Mobile menu toggle
-        const menuToggle = document.querySelector('.menu-toggle');
-        const nav = document.querySelector('nav');
-        
-        menuToggle.addEventListener('click', function() {
-            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
-            nav.style.position = 'absolute';
-            nav.style.top = '100%';
-            nav.style.right = '0';
-            nav.style.background = 'white';
-            nav.style.flexDirection = 'column';
-            nav.style.padding = '2rem';
-            nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
         });
         
         // Scroll animations
@@ -751,7 +895,7 @@
         // Form submission
         document.getElementById('commission-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Thank you for your commission request. Jason will contact you within 24 hours.');
+            alert('Thank you for your commission request! Jason will contact you within 24 hours to discuss your vision.');
             this.reset();
         });
         
@@ -762,14 +906,12 @@
         window.addEventListener('scroll', () => {
             const currentScroll = window.pageYOffset;
             
-            if (currentScroll > 100) {
-                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.05)';
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                header.style.transform = 'translateY(-100%)';
             } else {
-                header.style.boxShadow = 'none';
+                header.style.transform = 'translateY(0)';
             }
             
             lastScroll = currentScroll;
         });
     </script>
-</body>
-</html>
